@@ -209,7 +209,7 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 <tr>
 <td align="center">
 <b>Sustainability</b><br>
-<img src="images/sustainability.png" width="450">
+<img src="images/sustainablility.png" width="450">
 </td>
 <td align="center">
 <b>Rewards</b><br>
@@ -235,7 +235,7 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 </td>
 <td align="center">
 <b>Features</b><br>
-<img src="images/features.png" width="450">
+<img src="images/featuers.png" width="450">
 </td>
 </tr>
 </table>
