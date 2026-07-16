@@ -181,83 +181,70 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 ├── app.py              # Main Flask application factory
 └── requirements.txt    # Project dependencies
 ```
-# 📸 Application Screenshots
+## 📸 Application Screenshots
 
-## 🏠 Home
+<table>
+<tr>
+<td align="center">
+<b>Home</b><br>
+<img src="citizen%20images/home.png" width="450">
+</td>
+<td align="center">
+<b>City Dashboard</b><br>
+<img src="citizen%20images/city_dashboard.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Report an Issue</b><br>
+<img src="citizen%20images/report.png" width="450">
+</td>
+<td align="center">
+<b>Community</b><br>
+<img src="citizen%20images/community.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Sustainability</b><br>
+<img src="citizen%20images/sustainability.png" width="450">
+</td>
+<td align="center">
+<b>Rewards</b><br>
+<img src="citizen%20images/rewards.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Leaderboard</b><br>
+<img src="citizen%20images/leaderboard.png" width="450">
+</td>
+<td align="center">
+<b>Analytics</b><br>
+<img src="citizen%20images/analytics.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Profile</b><br>
+<img src="citizen%20images/profile.png" width="450">
+</td>
+<td align="center">
+<b>Features</b><br>
+<img src="citizen%20images/features.png" width="450">
+</td>
+</tr>
+</table>
+
+### Loading Screen
+
 <p align="center">
-  <img src="citizen images/home.png" width="800">
+<img src="citizen%20images/load.png" width="350">
 </p>
-
----
-
-## 📊 City Dashboard
-<p align="center">
-  <img src="citizen images/city_dashboard.png" width="800">
-</p>
-
----
-
-## 🚨 Report an Issue
-<p align="center">
-  <img src="citizen images/report.png" width="800">
-</p>
-
----
-
-## 🌱 Sustainability
-<p align="center">
-  <img src="citizen images/sustainability.png" width="800">
-</p>
-
----
-
-## 👥 Community
-<p align="center">
-  <img src="citizen images/community.png" width="800">
-</p>
-
----
-
-## 🎁 Rewards
-<p align="center">
-  <img src="citizen images/rewards.png" width="800">
-</p>
-
----
-
-## 🏆 Leaderboard
-<p align="center">
-  <img src="citizen images/leaderboard.png" width="800">
-</p>
-
----
-
-## 📈 Analytics
-<p align="center">
-  <img src="citizen images/analytics.png" width="800">
-</p>
-
----
-
-## 👤 User Profile
-<p align="center">
-  <img src="citizen images/profile.png" width="800">
-</p>
-
----
-
-## ⭐ Features Overview
-<p align="center">
-  <img src="citizen images/features.png" width="800">
-</p>
-
----
-
-## ⏳ Loading Screen
-<p align="center">
-  <img src="citizen images/load.png" width="800">
-</p>
----
 
 ## 🤝 Contributing
 
