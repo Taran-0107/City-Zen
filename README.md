@@ -181,7 +181,82 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 ├── app.py              # Main Flask application factory
 └── requirements.txt    # Project dependencies
 ```
+# 📸 Application Screenshots
 
+## 🏠 Home
+<p align="center">
+  <img src="citizen images/home.png" width="800">
+</p>
+
+---
+
+## 📊 City Dashboard
+<p align="center">
+  <img src="citizen images/city_dashboard.png" width="800">
+</p>
+
+---
+
+## 🚨 Report an Issue
+<p align="center">
+  <img src="citizen images/report.png" width="800">
+</p>
+
+---
+
+## 🌱 Sustainability
+<p align="center">
+  <img src="citizen images/sustainability.png" width="800">
+</p>
+
+---
+
+## 👥 Community
+<p align="center">
+  <img src="citizen images/community.png" width="800">
+</p>
+
+---
+
+## 🎁 Rewards
+<p align="center">
+  <img src="citizen images/rewards.png" width="800">
+</p>
+
+---
+
+## 🏆 Leaderboard
+<p align="center">
+  <img src="citizen images/leaderboard.png" width="800">
+</p>
+
+---
+
+## 📈 Analytics
+<p align="center">
+  <img src="citizen images/analytics.png" width="800">
+</p>
+
+---
+
+## 👤 User Profile
+<p align="center">
+  <img src="citizen images/profile.png" width="800">
+</p>
+
+---
+
+## ⭐ Features Overview
+<p align="center">
+  <img src="citizen images/features.png" width="800">
+</p>
+
+---
+
+## ⏳ Loading Screen
+<p align="center">
+  <img src="citizen images/load.png" width="800">
+</p>
 ---
 
 ## 🤝 Contributing
