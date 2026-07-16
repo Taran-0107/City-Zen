@@ -187,55 +187,55 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 <tr>
 <td align="center">
 <b>Home</b><br>
-<img src="citizen%20images/home.png" width="450">
+<img src="images/home.png" width="450">
 </td>
 <td align="center">
 <b>City Dashboard</b><br>
-<img src="citizen%20images/city_dashboard.png" width="450">
+<img src="images/city_dashboard.png" width="450">
 </td>
 </tr>
 
 <tr>
 <td align="center">
 <b>Report an Issue</b><br>
-<img src="citizen%20images/report.png" width="450">
+<img src="images/report.png" width="450">
 </td>
 <td align="center">
 <b>Community</b><br>
-<img src="citizen%20images/community.png" width="450">
+<img src="images/community.png" width="450">
 </td>
 </tr>
 
 <tr>
 <td align="center">
 <b>Sustainability</b><br>
-<img src="citizen%20images/sustainability.png" width="450">
+<img src="images/sustainability.png" width="450">
 </td>
 <td align="center">
 <b>Rewards</b><br>
-<img src="citizen%20images/rewards.png" width="450">
+<img src="images/rewards.png" width="450">
 </td>
 </tr>
 
 <tr>
 <td align="center">
 <b>Leaderboard</b><br>
-<img src="citizen%20images/leaderboard.png" width="450">
+<img src="images/leaderboard.png" width="450">
 </td>
 <td align="center">
 <b>Analytics</b><br>
-<img src="citizen%20images/analytics.png" width="450">
+<img src="images/analytics.png" width="450">
 </td>
 </tr>
 
 <tr>
 <td align="center">
 <b>Profile</b><br>
-<img src="citizen%20images/profile.png" width="450">
+<img src="images/profile.png" width="450">
 </td>
 <td align="center">
 <b>Features</b><br>
-<img src="citizen%20images/features.png" width="450">
+<img src="images/features.png" width="450">
 </td>
 </tr>
 </table>
@@ -243,7 +243,7 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 ### Loading Screen
 
 <p align="center">
-<img src="citizen%20images/load.png" width="350">
+<img src="images/load.png" width="350">
 </p>
 
 ## 🤝 Contributing
