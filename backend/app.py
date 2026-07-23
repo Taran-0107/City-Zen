@@ -36,7 +36,6 @@ def create_app():
     CORS(
         app,
         origins=[
-            app.config['API_URL'],
             app.config['FRONTEND_URL']  # Local development frontend
         ],
         supports_credentials=True
