@@ -31,7 +31,14 @@ def create_app():
 
     
     # Initialize extensions
-    CORS(app)
+    CORS(
+        app,
+        origins=[
+            os.environ.get('CORS_URLS')   # Production frontend
+        ],
+        supports_credentials=True
+    )
+
     JWTManager(app)
     
     # Initialize database
