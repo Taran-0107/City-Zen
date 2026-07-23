@@ -181,8 +181,70 @@ The backend follows a modular structure using Flask Blueprints to keep the code 
 ├── app.py              # Main Flask application factory
 └── requirements.txt    # Project dependencies
 ```
+## 📸 Application Screenshots
 
----
+<table>
+<tr>
+<td align="center">
+<b>Home</b><br>
+<img src="images/home.png" width="450">
+</td>
+<td align="center">
+<b>City Dashboard</b><br>
+<img src="images/city_dashboard.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Report an Issue</b><br>
+<img src="images/report.png" width="450">
+</td>
+<td align="center">
+<b>Community</b><br>
+<img src="images/community.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Sustainability</b><br>
+<img src="images/sustainablility.png" width="450">
+</td>
+<td align="center">
+<b>Rewards</b><br>
+<img src="images/rewards.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Leaderboard</b><br>
+<img src="images/leaderboard.png" width="450">
+</td>
+<td align="center">
+<b>Analytics</b><br>
+<img src="images/analytics.png" width="450">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<b>Profile</b><br>
+<img src="images/profile.png" width="450">
+</td>
+<td align="center">
+<b>Features</b><br>
+<img src="images/featuers.png" width="450">
+</td>
+</tr>
+</table>
+
+### Loading Screen
+
+<p align="center">
+<img src="images/load.png" width="350">
+</p>
 
 ## 🤝 Contributing
 

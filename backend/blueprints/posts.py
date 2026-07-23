@@ -1,13 +1,14 @@
 # blueprints/posts.py - Posts and social features endpoints
 from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models.database import Post, User, Notification
+from models.database import Post, User, Notification, Picture
 from utils.validators import validate_required_fields
 from utils.responses import success_response, error_response
 
 posts_bp = Blueprint('posts', __name__)
 post_model = Post()
 user_model = User()
+picture_model = Picture()
 notification_model = Notification()
 
 @posts_bp.route('', methods=['POST'])
@@ -68,10 +69,21 @@ def get_posts():
         for post in posts:
             user = user_model.find_one({'user_id': post['user_id']})
             if user:
+                media_url = None
+                if post.get('media_id'):
+                    media_record = picture_model.find_one({'picture_id': post['media_id']})
+                    media_url = media_record.get('url') if media_record else None
+
+                profile_picture_url = None
+                if user.get('profile_picture_id'):
+                    profile_picture_record = picture_model.find_one({'picture_id': user['profile_picture_id']})
+                    profile_picture_url = profile_picture_record.get('url') if profile_picture_record else None
+
                 post_data = {
                     'post_id': post['post_id'],
                     'content': post['content'],
                     'media_id': post.get('media_id'),
+                    'media_url': media_url,
                     'likes_count': post.get('likes_count', 0),
                     'comments_count': len(post.get('comments', [])),
                     'created_at': post['created_at'].isoformat(),
@@ -79,7 +91,8 @@ def get_posts():
                         'user_id': user['user_id'],
                         'name': user['name'],
                         'level': user.get('level', 1),
-                        'profile_picture_id': user.get('profile_picture_id')
+                        'profile_picture_id': user.get('profile_picture_id'),
+                        'profile_picture_url': profile_picture_url
                     }
                 }
                 enriched_posts.append(post_data)
@@ -184,6 +197,11 @@ def get_comments(post_id):
         for comment in comments:
             user = user_model.find_one({'user_id': comment['user_id']})
             if user:
+                profile_picture_url = None
+                if user.get('profile_picture_id'):
+                    profile_picture_record = picture_model.find_one({'picture_id': user['profile_picture_id']})
+                    profile_picture_url = profile_picture_record.get('url') if profile_picture_record else None
+
                 comment_data = {
                     'comment_id': comment['comment_id'],
                     'text': comment['text'],
@@ -191,7 +209,8 @@ def get_comments(post_id):
                     'user': {
                         'user_id': user['user_id'],
                         'name': user['name'],
-                        'profile_picture_id': user.get('profile_picture_id')
+                        'profile_picture_id': user.get('profile_picture_id'),
+                        'profile_picture_url': profile_picture_url
                     }
                 }
                 enriched_comments.append(comment_data)

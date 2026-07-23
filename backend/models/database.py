@@ -10,7 +10,7 @@ class Database:
     @staticmethod
     def initialize(uri):
         client = MongoClient(uri)
-        Database.DATABASE = client.get_database()
+        Database.DATABASE = client.get_database("cityzen")
         Database.create_indexes()
     
     @staticmethod
@@ -267,16 +267,22 @@ class Bill(BaseModel):
 class Picture(BaseModel):
     def __init__(self):
         super().__init__('pictures')
-    
+
     def store_file_info(self, file_data):
+        picture_id = file_data.get('picture_id') or str(ObjectId())
         picture = {
-            'filename': file_data['filename'],
-            'file_type': file_data['file_type'],
-            'file_path': file_data['file_path'],
+            'picture_id': picture_id,
+            'public_id': file_data.get('public_id'),
+            'url': file_data.get('url'),
+            'resource_type': file_data.get('resource_type'),
+            'file_type': file_data.get('file_type'),
+            'original_filename': file_data.get('original_filename'),
+            'file_size': file_data.get('file_size'),
             'user_id': file_data['user_id']
         }
 
-        return self.insert_one(picture)
+        self.insert_one(picture)
+        return picture_id
 
 # Reward Model
 class Reward(BaseModel):

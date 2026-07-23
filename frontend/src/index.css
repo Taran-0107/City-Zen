@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 10%;
+
+    /* Eco-green primary theme */
+    --primary: 140 65% 35%; /* #28a745 equivalent */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 140 65% 45%;
+
+    /* Sky-blue accent */
+    --secondary: 200 100% 50%; /* #00aaff equivalent */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 200 100% 60%;
+
+    --muted: 210 25% 94%;
+    --muted-foreground: 215 20% 45%;
+
+    --accent: 140 45% 92%;
+    --accent-foreground: 140 65% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 140 65% 35%;
+
+    /* Custom design system tokens */
+    --success: 140 65% 35%;
+    --success-foreground: 0 0% 100%;
+    --info: 200 100% 50%;
+    --info-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(140 65% 35%), hsl(140 65% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(200 100% 50%), hsl(200 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(140 65% 35%) 0%, hsl(200 100% 50%) 100%);
+    --gradient-eco: linear-gradient(45deg, hsl(140 65% 35%), hsl(140 80% 40%), hsl(120 70% 45%));
+    
+    /* Shadows */
+    --shadow-eco: 0 10px 30px -10px hsl(140 65% 35% / 0.3);
+    --shadow-info: 0 10px 30px -10px hsl(200 100% 50% / 0.3);
+    --shadow-glow: 0 0 40px hsl(140 65% 45% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 25% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 10%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 25% 10%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Dark mode eco-green */
+    --primary: 140 65% 45%;
+    --primary-foreground: 215 25% 8%;
+    --primary-glow: 140 65% 55%;
+
+    /* Dark mode sky-blue */
+    --secondary: 200 100% 60%;
+    --secondary-foreground: 215 25% 8%;
+    --secondary-glow: 200 100% 70%;
+
+    --muted: 215 25% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 215 25% 15%;
+    --accent-foreground: 140 65% 45%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 140 65% 45%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(140 65% 45%), hsl(140 65% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(200 100% 60%), hsl(200 100% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(140 65% 45%) 0%, hsl(200 100% 60%) 100%);
+    --gradient-eco: linear-gradient(45deg, hsl(140 65% 45%), hsl(140 80% 50%), hsl(120 70% 55%));
+    
+    /* Dark mode shadows */
+    --shadow-eco: 0 10px 30px -10px hsl(140 65% 45% / 0.4);
+    --shadow-info: 0 10px 30px -10px hsl(200 100% 60% / 0.4);
+    --shadow-glow: 0 0 40px hsl(140 65% 55% / 0.5);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* 3D Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px);
+  }
+  
+  .hover-lift:hover {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateZ(20px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Eco Button Variants */
+  .btn-eco {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground 
+           shadow-lg hover:shadow-xl transition-all duration-300 
+           hover:scale-105 active:scale-95;
+  }
+
+  .btn-sky {
+    @apply bg-gradient-to-r from-secondary to-secondary-glow text-secondary-foreground 
+           shadow-lg hover:shadow-xl transition-all duration-300 
+           hover:scale-105 active:scale-95;
+  }
+
+  /* Gradient Text */
+  .text-gradient-eco {
+    background: var(--gradient-eco);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-hero {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-lg bg-black/10 border border-white/10;
+  }
+
+  /* Loading animations */
+  .pulse-eco {
+    animation: pulse-eco 2s infinite;
+  }
+
+  @keyframes pulse-eco {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Build animation for loading */
+  .build-in {
+    animation: buildIn 0.8s ease-out forwards;
+  }
+
+  @keyframes buildIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}

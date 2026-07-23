@@ -9,6 +9,8 @@ from werkzeug.exceptions import HTTPException
 
 # Import database models
 from models.database import Database
+import cloudinary
+
 
 load_dotenv()
 
@@ -16,13 +18,31 @@ def create_app():
     app = Flask(__name__)
     
     # Configuration
-    app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'your-secret-key-change-in-production')
+    app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY')
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=7)
-    app.config['MONGO_URI'] = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/sustainability_app')
+    app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+    app.config['CLOUDINARY_URL'] = os.environ.get('CLOUDINARY_URL')
+    app.config['API_URL'] = os.environ.get('API_URL')
+    app.config['FRONTEND_URL'] = os.environ.get('FRONTEND_URL')
+
+    cloudinary.config(
+        cloudinary_url=app.config['CLOUDINARY_URL'],
+        secure=True
+    )
+
     
     # Initialize extensions
-    CORS(app)
+    CORS(
+        app,
+        origins=[
+            app.config['FRONTEND_URL']  # Local development frontend
+        ],
+        supports_credentials=True
+    )
+
+    #CORS(app)
+
     JWTManager(app)
     
     # Initialize database
@@ -79,3 +99,6 @@ def create_app():
 if __name__ == '__main__':
     app = create_app()
     app.run(debug=True, host='0.0.0.0', port=5001)
+
+else:
+    app = create_app()
