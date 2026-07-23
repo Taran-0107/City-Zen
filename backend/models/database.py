@@ -10,7 +10,7 @@ class Database:
     @staticmethod
     def initialize(uri):
         client = MongoClient(uri)
-        Database.DATABASE = client.get_database()
+        Database.DATABASE = client.get_database("cityzen")
         Database.create_indexes()
     
     @staticmethod
