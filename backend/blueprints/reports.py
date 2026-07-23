@@ -1,12 +1,13 @@
 # blueprints/reports.py - Environmental reports endpoints
 from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models.database import Report, User, Notification
+from models.database import Report, User, Notification, Picture
 from utils.responses import success_response, error_response
 
 reports_bp = Blueprint('reports', __name__)
 report_model = Report()
 user_model = User()
+picture_model = Picture()
 notification_model = Notification()
 
 @reports_bp.route('', methods=['POST'])
@@ -82,6 +83,16 @@ def get_reports():
         for report in reports:
             user = user_model.find_one({'user_id': report['user_id']})
             if user:
+                evidence_url = None
+                if report.get('evidence_id'):
+                    evidence_record = picture_model.find_one({'picture_id': report['evidence_id']})
+                    evidence_url = evidence_record.get('url') if evidence_record else None
+
+                profile_picture_url = None
+                if user.get('profile_picture_id'):
+                    profile_picture_record = picture_model.find_one({'picture_id': user['profile_picture_id']})
+                    profile_picture_url = profile_picture_record.get('url') if profile_picture_record else None
+
                 report_data = {
                     'report_id': report['report_id'],
                     'title': report.get('title', ''),
@@ -89,6 +100,7 @@ def get_reports():
                     'location': report.get('location', ''),
                     'description': report.get('description', ''),
                     'evidence_id': report.get('evidence_id'),
+                    'evidence_url': evidence_url,
                     'likes_count': report.get('likes_count', 0),
                     'verification_count': report.get('verification_count', 0),
                     'created_at': report['created_at'].isoformat(),
@@ -96,7 +108,8 @@ def get_reports():
                         'user_id': user['user_id'],
                         'name': user['name'],
                         'level': user['level'],
-                        'profile_picture_id': user.get('profile_picture_id')
+                        'profile_picture_id': user.get('profile_picture_id'),
+                        'profile_picture_url': profile_picture_url
                     }
                 }
                 enriched_reports.append(report_data)
@@ -232,6 +245,16 @@ def get_report_details(report_id):
         current_user_email = get_jwt_identity()
         current_user = user_model.find_one({'email': current_user_email})
         
+        evidence_url = None
+        if report.get('evidence_id'):
+            evidence_record = picture_model.find_one({'picture_id': report['evidence_id']})
+            evidence_url = evidence_record.get('url') if evidence_record else None
+
+        profile_picture_url = None
+        if user.get('profile_picture_id'):
+            profile_picture_record = picture_model.find_one({'picture_id': user['profile_picture_id']})
+            profile_picture_url = profile_picture_record.get('url') if profile_picture_record else None
+
         report_data = {
             'report_id': report['report_id'],
             'title': report.get('title', ''),
@@ -239,6 +262,7 @@ def get_report_details(report_id):
             'location': report.get('location', ''),
             'description': report.get('description', ''),
             'evidence_id': report.get('evidence_id'),
+            'evidence_url': evidence_url,
             'likes_count': report.get('likes_count', 0),
             'verification_count': report.get('verification_count', 0),
             'created_at': report['created_at'].isoformat(),
@@ -246,7 +270,8 @@ def get_report_details(report_id):
                 'user_id': user['user_id'],
                 'name': user['name'],
                 'level': user['level'],
-                'profile_picture_id': user.get('profile_picture_id')
+                'profile_picture_id': user.get('profile_picture_id'),
+                'profile_picture_url': profile_picture_url
             }
         }
         

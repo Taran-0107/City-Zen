@@ -9,6 +9,8 @@ from werkzeug.exceptions import HTTPException
 
 # Import database models
 from models.database import Database
+import cloudinary
+
 
 load_dotenv()
 
@@ -20,6 +22,13 @@ def create_app():
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=7)
     app.config['MONGO_URI'] = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/sustainability_app')
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+    app.config['CLOUDINARY_URL'] = os.environ.get('CLOUDINARY_URL')
+
+    cloudinary.config(
+        cloudinary_url=app.config['CLOUDINARY_URL'],
+        secure=True
+    )
+
     
     # Initialize extensions
     CORS(app)

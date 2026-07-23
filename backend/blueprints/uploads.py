@@ -35,16 +35,19 @@ def upload_image():
         
         # Store file information
         picture_id = picture_model.store_file_info({
-            'filename': file_info['filename'],
-            'file_type': file_info['file_type'],
-            'file_path': file_info['file_path'],
-            'user_id': current_user['user_id']
+            "public_id": file_info["public_id"],
+            "url": file_info["url"],
+            "resource_type": file_info["resource_type"],
+            "file_type": file_info["file_type"],
+            "original_filename": file_info["original_filename"],
+            "file_size": file_info["file_size"],
+            "user_id": current_user["user_id"]
         })
         
         return success_response({
             'message': 'Image uploaded successfully',
             'picture_id': picture_id,
-            'file_path': file_info['file_path']
+            'file_url': file_info['url']
         }, 201)
         
     except Exception as e:

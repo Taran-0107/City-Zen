@@ -1,6 +1,7 @@
 # blueprints/auth.py - Authentication endpoints
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from bson import ObjectId
 from models.database import User,Picture
 from utils.validators import validate_email, validate_password, validate_required_fields
 from utils.responses import success_response, error_response
@@ -105,9 +106,13 @@ def get_profile():
         profile_picture_url = None
         if user.get('profile_picture_id'):
             picture = picture_model.find_one({'picture_id': user['profile_picture_id']})
+            if not picture:
+                try:
+                    picture = picture_model.find_one({'_id': ObjectId(user['profile_picture_id'])})
+                except Exception:
+                    picture = None
             if picture:
-                # Construct full URL
-                profile_picture_url = f"{request.host_url}uploads/{picture['file_path'].replace('uploads/', '', 1)}"
+                profile_picture_url = picture.get('url') or picture.get('file_path')
 
         # Remove sensitive information
         user_data = {

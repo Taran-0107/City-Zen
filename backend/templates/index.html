@@ -369,7 +369,9 @@
                 const container = document.getElementById('profile-details');
                 if (data && data.success) {
                     container.innerHTML = `<p class="mb-2"><strong>User ID:</strong> <span class="font-mono text-sm bg-gray-100 p-1 rounded">${data.user_id}</span></p><p class="mb-2"><strong>Name:</strong> ${data.name}</p><p class="mb-2"><strong>Email:</strong> ${data.email}</p><p class="mb-2"><strong>Points:</strong> <span class="font-bold text-green-600">${data.points}</span></p><p class="mb-2"><strong>Level:</strong> <span class="font-bold text-indigo-600">${data.level}</span></p><p class="mb-2"><strong>Badges:</strong> ${data.badges.join(', ') || 'None'}</p><p class="mb-2"><strong>Carbon Saved:</strong> ${data.carbon_footprint_saved.toFixed(2)} kg CO2</p><p class="mb-2"><strong>Followers:</strong> ${data.followers_count}</p><p class="mb-2"><strong>Following:</strong> ${data.following_count}</p>`;
-                    if (data.profile_picture_id) {
+                    if (data.profile_picture_url) {
+                        profilePicPreview.src = data.profile_picture_url;
+                    } else if (data.profile_picture_id) {
                         profilePicPreview.src = `${API_BASE_URL}/media/view/${data.profile_picture_id}`;
                     } else {
                         profilePicPreview.src = "https://placehold.co/200x200/e2e8f0/a0aec0?text=No+Image";
@@ -450,8 +452,8 @@
                  const container = document.getElementById('posts-container');
                  if (data && data.success) {
                     container.innerHTML = data.posts.length ? data.posts.map(p => {
-                        const avatarUrl = p.user.profile_picture_id ? `${API_BASE_URL}/media/view/${p.user.profile_picture_id}` : `https://placehold.co/40x40/e2e8f0/a0aec0?text=${p.user.name.charAt(0)}`;
-                        const mediaHTML = p.media_id ? `<img src="${API_BASE_URL}/media/view/${p.media_id}" class="mt-3 rounded-lg w-full object-cover max-h-96">` : '';
+                        const avatarUrl = p.user.profile_picture_url || (p.user.profile_picture_id ? `${API_BASE_URL}/media/view/${p.user.profile_picture_id}` : `https://placehold.co/40x40/e2e8f0/a0aec0?text=${p.user.name.charAt(0)}`);
+                        const mediaHTML = p.media_url || (p.media_id ? `<img src="${API_BASE_URL}/media/view/${p.media_id}" class="mt-3 rounded-lg w-full object-cover max-h-96">` : '');
                         return `<div class="bg-white p-4 rounded-lg shadow"><div class="flex items-center mb-3"><img src="${avatarUrl}" class="w-10 h-10 rounded-full mr-3 object-cover border"><div><div class="font-semibold">${p.user.name}</div><div class="text-xs text-gray-500">${new Date(p.created_at).toLocaleString()}</div></div></div><p class="my-2 text-gray-800">${p.content}</p>${mediaHTML}<div class="flex items-center gap-4 mt-2 text-gray-600"><button class="like-post-btn flex items-center gap-1" data-post-id="${p.post_id}">❤️ <span id="likes-count-${p.post_id}">${p.likes_count}</span></button><button class="comment-post-btn flex items-center gap-1" data-post-id="${p.post_id}">💬 <span id="comments-count-${p.post_id}">${p.comments_count}</span></button>${currentUser && p.user.user_id === currentUser.user_id ? `<button class="delete-post-btn text-red-500 ml-auto" data-post-id="${p.post_id}">Delete</button>` : ''}</div><div id="comments-section-${p.post_id}" class="hidden mt-4 pt-4 border-t"></div></div>`
                     }).join('') : `<p>No posts found.</p>`;
                  }
@@ -502,7 +504,7 @@
                 const container = document.getElementById('reports-container');
                 if (data && data.success) {
                     container.innerHTML = data.reports.length ? data.reports.map(r => {
-                        const evidenceHTML = r.evidence_id ? `<img src="${API_BASE_URL}/media/view/${r.evidence_id}" class="mt-3 rounded-lg w-full object-cover max-h-96">` : '';
+                        const evidenceHTML = r.evidence_url || (r.evidence_id ? `<img src="${API_BASE_URL}/media/view/${r.evidence_id}" class="mt-3 rounded-lg w-full object-cover max-h-96">` : '');
                         return `<div class="bg-white p-4 rounded-lg shadow"><h4 class="font-bold text-lg">${r.title || 'Untitled Report'}</h4><p class="text-sm bg-indigo-100 text-indigo-700 inline-block px-2 py-0.5 rounded-full my-1">${r.category}</p><p class="text-gray-600 mt-1 font-semibold">${r.location}</p><p class="my-2">${r.description}</p>${evidenceHTML}<div class="text-xs text-gray-500">By ${r.user.name} on ${new Date(r.created_at).toLocaleDateString()}</div><div class="flex items-center gap-4 mt-2"><button class="like-report-btn" data-report-id="${r.report_id}">👍 <span id="report-likes-${r.report_id}">${r.likes_count}</span></button><button class="verify-report-btn" data-report-id="${r.report_id}">✅ <span id="report-verifs-${r.report_id}">${r.verification_count}</span></button></div></div>`
                     }).join('') : '<p>No reports found.</p>';
                 }

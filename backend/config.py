@@ -10,6 +10,8 @@ class Config:
     MONGO_URI = os.environ.get('MONGO_URI') or 'mongodb://localhost:27017/sustainability_app'
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB
     UPLOAD_FOLDER = 'uploads'
+    CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+    CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
 class DevelopmentConfig(Config):
     """Development configuration"""
@@ -38,3 +40,4 @@ config = {
     'testing': TestingConfig,
     'default': DevelopmentConfig
 }
+
