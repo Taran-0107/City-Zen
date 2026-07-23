@@ -9,7 +9,7 @@
 [![Flask](https://img.shields.io/badge/Flask-2.3.3-black)](https://flask.palletsprojects.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-4.5-green)](https://www.mongodb.com/)
 
-🌐 **Live Demo:** https://city-zen.vercel.app
+🌐 **Live Demo:** [website](https://city-zen-one.vercel.app/)
 
 ---
 
