@@ -23,6 +23,7 @@ def create_app():
     app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
     app.config['CLOUDINARY_URL'] = os.environ.get('CLOUDINARY_URL')
+    app.config['API_URL'] = os.environ.get('API_URL')
 
     cloudinary.config(
         cloudinary_url=app.config['CLOUDINARY_URL'],
@@ -31,13 +32,15 @@ def create_app():
 
     
     # Initialize extensions
-    CORS(
-        app,
-        origins=[
-            os.environ.get('CORS_URLS')   # Production frontend
-        ],
-        supports_credentials=True
-    )
+    # CORS(
+    #     app,
+    #     origins=[
+    #         app.config['API_URL']  # Production frontend
+    #     ],
+    #     supports_credentials=True
+    # )
+
+    CORS(app)
 
     JWTManager(app)
     
