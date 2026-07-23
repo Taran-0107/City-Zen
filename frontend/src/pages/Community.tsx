@@ -11,7 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import Navigation from '@/components/Navigation';
 import api from '@/services/api';
 
-const BASE_URL = 'https://city-zen.onrender.com/';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://city-zen.onrender.com/';
 
 const Community = () => {
   const [anonymousMode, setAnonymousMode] = useState(false);

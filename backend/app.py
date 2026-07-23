@@ -24,6 +24,7 @@ def create_app():
     app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
     app.config['CLOUDINARY_URL'] = os.environ.get('CLOUDINARY_URL')
     app.config['API_URL'] = os.environ.get('API_URL')
+    app.config['FRONTEND_URL'] = os.environ.get('FRONTEND_URL')
 
     cloudinary.config(
         cloudinary_url=app.config['CLOUDINARY_URL'],
@@ -32,15 +33,16 @@ def create_app():
 
     
     # Initialize extensions
-    # CORS(
-    #     app,
-    #     origins=[
-    #         app.config['API_URL']  # Production frontend
-    #     ],
-    #     supports_credentials=True
-    # )
+    CORS(
+        app,
+        origins=[
+            app.config['API_URL'],
+            app.config['FRONTEND_URL']  # Local development frontend
+        ],
+        supports_credentials=True
+    )
 
-    CORS(app)
+    #CORS(app)
 
     JWTManager(app)
     

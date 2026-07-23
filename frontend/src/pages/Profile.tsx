@@ -15,7 +15,7 @@ import Navigation from '@/components/Navigation';
 import { useAuth } from '@/hooks/useAuth';
 import api from '@/services/api';
 
-const BASE_URL = 'https://city-zen.onrender.com/';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://city-zen.onrender.com/';
 
 const Profile = () => {
   const { user, updateUser } = useAuth(); // Changed from 'login' to 'updateUser'
